@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="./listMusics.xhtml">
+            <ui:define name="add to playList">
+                Add Music to Playlist
+            </ui:define>
+            <ui:define name="right">
+                <f:view>
+                    <h:form>
+                        <h:panelGroup>
+                            <div align="left">
+                                <h:inputHidden id="id_m" value="#{playListManagedBean.musicId}" />
+                                <h:inputHidden id="id" value="#{playListManagedBean.idPlay}" />                                
+                                <h:commandButton  value="Add selected music" action="#{playListManagedBean.addMusicToPlay()}" />
+                                <p></p>
+                                <h:outputLabel class="labelout" value="MY PLAYLISTS " style="padding-right: 20px"/> 
+                                <h:selectOneMenu class="optionPlay" value="#{playListManagedBean.currentPlaylist}" converter="#{playListManagedBean}" >
+                                    <f:selectItems value="#{playListManagedBean.listPlays}" />
+                                </h:selectOneMenu>                               
+                                <h:messages/>
+                                <h:outputLabel  style="color:#ff0000" value="#{playListManagedBean.erro}" />
+                            </div>
+                        </h:panelGroup>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

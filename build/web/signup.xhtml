@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css" ></link>
+    </h:head>
+    <h:body>
+        <div align="center">
+
+            <h:form>
+                <table border="0" align="center" >
+                    <tr>
+                        <td colspan="2"  ><h2> SIGN UP GETPLAY</h2></td></tr>
+                    <tr>
+                        <td><h:outputLabel   class= "out" id="name" value="NAME"  /></td>
+                        <td><h:inputText title="name" id="nameInserted" value="#{signUpManagedBean.user.name}" required="true" requiredMessage="The name field is required"></h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel  class= "out" id="email" value="EMAIL"/></td>
+                        <td>
+                            <h:inputText   id="emailInserted" value="#{signUpManagedBean.user.email }"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel  class= "out" id="pass" value="PASSWORD" /></td>
+                        <td><h:inputSecret id="passInserted" value="#{signUpManagedBean.user.password }" required="true" requiredMessage="Password field is required"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel class= "out" id="pass1" value="CONFIRM PASS" /></td>
+                        <td><h:inputSecret id="passConfInserted" value="#{signUpManagedBean.passConf}" required="true" requiredMessage="Confirm password"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><h:commandButton class= "but1" id="save" value="SAVE" action="#{signUpManagedBean.createUser()}"/>
+                            <h:commandButton immediate="true" class= "but2" id="cancel" value="CANCEL" action="index"/></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2" ><h:messages style="color:#ff0000"/></td></tr>
+                    <td><h:outputLabel  style="color:#ff0000" value="#{signUpManagedBean.erro}" /></td>
+
+
+                </table>
+            </h:form>
+        </div>
+
+    </h:body>
+
+</html>
+

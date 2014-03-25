@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="title">
+                EDITING MUSIC
+            </ui:define>
+            <ui:define name="content">
+                <f:view>
+                    <div align="left">
+                        <h:form class="createMusic">        
+                            <table class="tabelaDetail">
+                                <tr><td colspan="2" align="left"><h4 padding-left="20">EDIT MUSIC</h4></td></tr>
+                                <tr>
+                                    <td><h:outputLabel value="Title"/></td>
+                                    <td align="left"><h:inputText id="title" class="textbox" value="#{musicListManagedBean.m.title}" required="true" requiredMessage="The Title field is required."/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel value="Artist"/></td>
+                                    <td align="left"><h:inputText id="artist" class="textbox" value="#{musicListManagedBean.m.artist}" required="true"  requiredMessage="The Artist field is required."/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel value="Album"/></td>
+                                    <td align="left"><h:inputText  class="textbox" value="#{musicListManagedBean.m.album}" required="true" requiredMessage="The Album field is required."/></td>                                
+
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel value="Year"/></td>
+                                    <td align="left"><h:inputText id="Year" class="textbox" value="#{musicListManagedBean.m.yearAlbum}" required="true" requiredMessage="The Album Year field is required. Must be greater than or equal to 1900"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="min-width:50px"><h:outputLabel value="At Path"/></td>
+                                    <td align="left"><h:inputText class="textbox" value="#{musicListManagedBean.m.pathMusic}" disabled="true"/></td>
+                                </tr>
+                                <h:inputHidden id="id" value="#{musicListManagedBean.id}" />
+                                <tr>
+                                    <td></td>
+                                    <td align="right"> <h:commandButton value="SAVE" action="#{musicListManagedBean.edit()}"/></td>
+                                </tr>
+                            </table>
+                        </h:form>
+                    </div>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

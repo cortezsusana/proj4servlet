@@ -1,0 +1,43 @@
+
+input{
+    text-align:left;
+    width: 100%;
+}
+.out{
+    text-align:left;
+    width: 100%;
+    font-family:Verdana;
+    font-size:12px;
+    font-weight:lighter;
+    font-style:normal;
+    
+}
+.but1{
+    
+    text-align:center;
+    width: 50%;
+    font-family:Arial Black;
+    font-size:12px;
+    font-style:normal;
+    margin: 2px;
+}
+.but2{
+    text-align:center;
+    width: 50%;
+    font-family:Arial Black;
+    font-size:12px;
+    font-style:normal;
+    margin: 2px;
+}
+h2{
+    text-align:center;
+    width: 100%;
+    font-family:Arial Black;
+    font-size:20px;
+    font-weight:bold;
+    font-style:italic;
+}
+table{
+    width: 400px;
+    
+}

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>GetPLAY</title>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"></link>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,
+              700italic,400,300,700,600|Volkhov:400,400italic,700,700italic|Lora:400,700,400italic,700italic' 
+              rel='stylesheet' type='text/css'></link>
+        <title>Home</title>
+    </h:head>
+
+    <h:body>
+        <nav id="navigation" role="navigation">
+            <ui:insert name="top">
+                <h:form> 
+                    <div id="colLeft">GetPlay</div>
+                    <div id="colCenter">       
+                        <h:selectOneMenu   id="searchOption" class="search" required="true" value="#{musicListManagedBean.option}"  >
+                            <f:selectItem itemValue="1" itemLabel="Title and Artist" /> 
+                            <f:selectItem itemValue="2" itemLabel="Title"/>
+                            <f:selectItem itemValue="3" itemLabel="Artist"/>                    
+                        </h:selectOneMenu >
+                        <h:inputText id="inputsearch" class="inputsearch" value="#{musicListManagedBean.search}"></h:inputText>
+                        <h:commandButton id="search" value ="search" action="#{musicListManagedBean.optionChosed()}" image="/resources/img/search.png" />   
+                    </div>
+                    <div id="colRight">
+                        <h:outputLabel id="welcome" value="Welcome #{userManagedBean.userEJB.user.name}"/>
+                        <h:selectOneMenu   id="userOption" class="optionUser" required="true" value="#{userManagedBean.option}"  >   
+                            <f:selectItem itemValue="1" itemLabel="OPTIONS" rendered="false"/>
+                            <f:selectItem itemValue="2" itemLabel="Edit your profile"  />
+                            <f:selectItem itemValue="3" itemLabel="Delete account"/>
+                            <f:selectItem itemValue="4" itemLabel="Log Out"/>                        
+                        </h:selectOneMenu>
+                        <h:commandButton   id="go" class="but1" value="GO" action="#{userManagedBean.optionChosed}" />
+                    </div>
+                </h:form>
+            </ui:insert>
+        </nav>
+        
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <h:form>
+                        <h:commandButton id="music" class="menuButtons" value="MUSICS" action="#{musicListManagedBean.allMusicList()}" ></h:commandButton>
+                        <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>
+                    </h:form></ui:insert>
+            </div>
+            <div>
+                <div id="right">
+                    <ui:insert name="right"> </ui:insert>
+                </div>
+                <div id="content" class="right_content">
+                    <ui:insert name="content"> </ui:insert>
+                </div>
+            </div>
+        </div>        
+    </h:body>
+</html>
