@@ -45,8 +45,7 @@ import javax.validation.constraints.Size;
    @NamedQuery(name = "Music.OrderByDESCTitle", query ="SELECT m FROM Music m ORDER BY m.title DESC"),
    @NamedQuery(name = "Music.SearchByTitle", query = "SELECT m FROM Music m WHERE m.title LIKE :title"),
    @NamedQuery(name = "Music.SearchByArtist", query = "SELECT m FROM Music m WHERE m.artist LIKE :artist"),
-   @NamedQuery(name = "Music.SearchByBoth", query = "SELECT m FROM Music m WHERE m.artist LIKE :artist or m.title LIKE :title"),
-    @NamedQuery(name = "Music.FindPopular", query = "SELECT m FROM Music m WHERE SIZE(m.playlistCollection) > 0 ORDER BY SIZE(m.playlistCollection) DESC")     
+   @NamedQuery(name = "Music.SearchByBoth", query = "SELECT m FROM Music m WHERE m.artist LIKE :artist or m.title LIKE :title")
 })
 //@Table(name="tbl_music") // se definido atribui o nome dado à tabela, senão aparece como o nome da classe
 public class Music implements Serializable, Comparable<Music>{
