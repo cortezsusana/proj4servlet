@@ -206,21 +206,14 @@ public class MusicListManagedBean {
         return null;
     }
     
-    public String mostPopular() {
-        items = musicFacade.findAll();
-        for (int i = 0; i < getItems().size(); i++) {
-            Collections.sort(items);
-        }
-        printList();
+    public String mostPopularList() {
+        if (musicFacade != null) {
+            items = musicFacade.mostPopular();
             return "listMusics";
         }
-    public void printList(){
-        for (Music m1: items) {
-            System.out.println(m1);
-        }
+        return null;
     }
-    
-
+  
     public UserBean getUser() {
         return user;
     }

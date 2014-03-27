@@ -6,6 +6,7 @@
 package pt.uc.dei.ar.proj3.grupob.facades;
 
 import static java.util.Calendar.YEAR;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 import pt.uc.dei.ar.proj3.grupob.entities.Music;
@@ -117,4 +118,17 @@ public class MusicFacade extends AbstractFacade<Music> {
         }
         return false;
     }
+    
+     public List<Music> mostPopular() {
+        List<Music> items = findAll();
+        for (int i = 0; i < items.size(); i++) {
+            Collections.sort(items);
+        }
+        for(Music m: items){
+            System.out.println(m);
+        }
+            return items;
+        }
+     
+     
 }
