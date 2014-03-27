@@ -8,13 +8,18 @@
 package pt.uc.dei.ar.proj3.grupob.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -43,13 +48,14 @@ import javax.validation.constraints.Size;
    @NamedQuery(name = "Music.SearchByBoth", query = "SELECT m FROM Music m WHERE m.artist LIKE :artist or m.title LIKE :title")     
 })
 //@Table(name="tbl_music") // se definido atribui o nome dado à tabela, senão aparece como o nome da classe
-public class Music implements Serializable {
+public class Music implements Serializable, Comparable<Music>{
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false) 
+    @Column(name = "music_id")
     private Long music_id;
     
     @Basic(optional = false)
@@ -81,6 +87,9 @@ public class Music implements Serializable {
     @NotNull
     @Column(length = 150, nullable=false, unique = true, updatable = false)
     private String pathMusic;
+    
+    @ManyToMany(mappedBy = "musics", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private List<Playlist> playlistCollection;
     
     @ManyToOne 
     @JoinColumn( name="userPlay_id", referencedColumnName = "userPlay_id")
@@ -158,6 +167,15 @@ public class Music implements Serializable {
         this.music_id = id;
     }
 
+    public List<Playlist> getPlaylistCollection() {
+        return playlistCollection;
+    }
+
+    public void setPlaylistCollection(List<Playlist> playlistCollection) {
+        this.playlistCollection = playlistCollection;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -180,7 +198,13 @@ public class Music implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Music[ id=" + music_id + ", title: "+ title + ", userPLay: " + userPlayID + " ]";
+        return "entities.Music[ id=" + music_id + ", title: "+ title + ", userPLay: " + userPlayID + ", nºutilizações: " + this.getPlaylistCollection().size()+" ]";
+    }
+
+    @Override
+    public int compareTo(Music o) {
+        //ordena a lista de musicas mais utilizadas por ordem decrescente
+        return o.getPlaylistCollection().size()-this.getPlaylistCollection().size();
     }
     
 }

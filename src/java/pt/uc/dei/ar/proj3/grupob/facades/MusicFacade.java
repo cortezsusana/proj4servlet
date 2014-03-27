@@ -13,6 +13,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import pt.uc.dei.ar.proj3.grupob.entities.Playlist;
+import pt.uc.dei.ar.proj3.grupob.entities.Userplay;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.MusicAlreadyExistException;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.YearException;
 
@@ -115,7 +117,4 @@ public class MusicFacade extends AbstractFacade<Music> {
         }
         return false;
     }
-    
-
-
 }

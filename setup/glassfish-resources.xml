@@ -10,5 +10,5 @@
         <property name="URL" value="jdbc:mysql://localhost:3306/proj3?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="proj3" object-type="user" pool-name="mysql_proj3_susanaPool"/>
+    <jdbc-resource enabled="true" jndi-name="myproj3" object-type="user" pool-name="mysql_proj3_susanaPool"/>
 </resources>

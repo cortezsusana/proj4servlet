@@ -3,6 +3,7 @@ package pt.uc.dei.ar.proj3.grupob.view;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -191,6 +192,7 @@ public class MusicListManagedBean {
             allMusicList();
             return "listMusics";
         } else {
+            JsfUtil.addErrorMessage("You don´t have permission to delete this music");
             return null;
         }
 
@@ -203,6 +205,21 @@ public class MusicListManagedBean {
         }
         return null;
     }
+    
+    public String mostPopular() {
+        items = musicFacade.findAll();
+        for (int i = 0; i < getItems().size(); i++) {
+            Collections.sort(items);
+        }
+        printList();
+            return "listMusics";
+        }
+    public void printList(){
+        for (Music m1: items) {
+            System.out.println(m1);
+        }
+    }
+    
 
     public UserBean getUser() {
         return user;
