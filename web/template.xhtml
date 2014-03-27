@@ -44,21 +44,31 @@
                 </h:form>
             </ui:insert>
         </nav>
-        
+
         <div>
             <div id="left">
                 <ui:insert name="left">
                     <h:form>
                         <h:commandButton id="music" class="menuButtons" value="MUSICS" action="#{musicListManagedBean.allMusicList()}" ></h:commandButton>
-                        <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>
-                    </h:form></ui:insert>
+                        <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>                     
+                    </h:form>
+                    <form action="popularServlet">
+                        <input class="menuButtons" type="submit" value="POPULAR"></input>                       
+                    </form>
+                </ui:insert>
             </div>
             <div>
                 <div id="right">
-                    <ui:insert name="right"> </ui:insert>
+                    <div><ui:insert name="right1">  
+                        </ui:insert></div>
+                    <div><ui:insert name="right2"> </ui:insert></div>
+
                 </div>
                 <div id="content" class="right_content">
-                    <ui:insert name="content"> </ui:insert>
+                    <ui:insert name="content"> 
+
+
+                    </ui:insert>
                 </div>
             </div>
         </div>        

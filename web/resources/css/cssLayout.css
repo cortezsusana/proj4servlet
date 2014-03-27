@@ -35,7 +35,7 @@ h4{
     float: right;
     background-color: whitesmoke;
     padding-top: 50px;
-    width: 150px;
+    width: 300px;
     min-height: 600px;
 }
 
@@ -54,7 +54,7 @@ h4{
 .right_content {
     background-color: whitesmoke;
     padding-top: 50px;
-    margin: 0px 150px 0px 150px;
+    margin: 0px 300px 0px 150px;
 }
 
 #top a:link, #top a:visited {
