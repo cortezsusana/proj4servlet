@@ -121,9 +121,8 @@ public class MusicFacade extends AbstractFacade<Music> {
     
      public List<Music> mostPopular() {
         List<Music> items = findAll();
-        for (int i = 0; i < items.size(); i++) {
-            Collections.sort(items);
-        }
+        Collections.sort(items);
+        
         for(Music m: items){
             System.out.println(m);
         }

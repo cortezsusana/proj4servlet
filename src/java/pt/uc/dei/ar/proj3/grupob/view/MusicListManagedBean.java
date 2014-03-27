@@ -2,14 +2,18 @@ package pt.uc.dei.ar.proj3.grupob.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
@@ -41,6 +45,7 @@ public class MusicListManagedBean {
     private Long id;
     private Playlist playTarget;
     private Long idPlay;
+    private String url;
     
     
     @Inject
@@ -64,6 +69,17 @@ public class MusicListManagedBean {
     public void initializeMusicList() {
         allMusicList();
         this.m = new Music();
+  
+        //definição da url do servlet
+        FacesContext ctxt = FacesContext.getCurrentInstance();
+        ExternalContext ext = ctxt.getExternalContext();
+        this.url = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
+                + ext.getApplicationContextPath() + "/popularservlet?" + getRandomNumber();
+
+    }
+
+    public static int getRandomNumber() {
+        return new Random().nextInt();
     }
 
     public Playlist getPlayTarget() {
@@ -79,6 +95,7 @@ public class MusicListManagedBean {
         System.out.println("FOI DESTRUIDO " + m);
     }
 
+   
     public Upload getUpload() {
         return upload;
     }
@@ -209,7 +226,7 @@ public class MusicListManagedBean {
     public String mostPopularList() {
         if (musicFacade != null) {
             items = musicFacade.mostPopular();
-            return "listMusics";
+            return "listPopular";
         }
         return null;
     }
@@ -324,5 +341,12 @@ public class MusicListManagedBean {
         this.musicFacade = musicFacade;
     }
 
+    public String getUrl() {
+        return url;
+    }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
 }

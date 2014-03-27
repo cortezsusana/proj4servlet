@@ -50,11 +50,9 @@
                 <ui:insert name="left">
                     <h:form>
                         <h:commandButton id="music" class="menuButtons" value="MUSICS" action="#{musicListManagedBean.allMusicList()}" ></h:commandButton>
-                        <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>                     
+                        <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>   
+                         <h:commandButton id="pop" class="menuButtons" value="POPULAR" action="popular"/>   
                     </h:form>
-                    <form action="popularServlet">
-                        <input class="menuButtons" type="submit" value="POPULAR"></input>                       
-                    </form>
                 </ui:insert>
             </div>
             <div>

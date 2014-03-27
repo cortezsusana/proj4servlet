@@ -84,3 +84,38 @@ a:link:hover, a:visited:hover  {
     font-weight : normal;
     text-decoration : underline;
 }
+
+#styletable thead{
+    font-size: 12px;
+    font-weight: 600;
+    color: whitesmoke;
+    border-top-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    text-align: left;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: rgba(0,0,0,.9);
+}
+
+#styletable td{
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 0.1px;
+    border-bottom-width: 0.1px;
+    border-left-width: 0.1px;
+    border-right-width: 0.1px;
+
+}
