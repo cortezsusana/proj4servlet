@@ -16,6 +16,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -50,6 +52,7 @@ public class Playlist implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "playlist_id")
     private Long play_id;
 
     @NotNull
@@ -62,10 +65,13 @@ public class Playlist implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(updatable = false)
     private Date datePlay;
-
+    
     @ManyToOne
     private Userplay userPlayID;
 
+    @JoinTable(name = "playlist_has_music", joinColumns = {
+        @JoinColumn(name = "Playlist_playlist_id", referencedColumnName = "playlist_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "Music_music_id", referencedColumnName = "music_id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Music> musics;
     
@@ -112,6 +118,24 @@ public class Playlist implements Serializable {
         this.play_id = id;
     }
 
+    public Long getPlay_id() {
+        return play_id;
+    }
+
+    public void setPlay_id(Long play_id) {
+        this.play_id = play_id;
+    }
+
+    public Userplay getUserPlayID() {
+        return userPlayID;
+    }
+
+    public void setUserPlayID(Userplay userPlayID) {
+        this.userPlayID = userPlayID;
+    }
+
+
+    
     @Override
     public int hashCode() {
         int hash = 0;

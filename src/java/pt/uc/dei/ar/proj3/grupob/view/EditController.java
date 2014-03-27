@@ -196,6 +196,7 @@ public class EditController implements Serializable, Converter {
         }
         return null;
     }
+    
 
     public String removeMusic(Music music) {
         currentPlay = playFacade.find(idPlay);
@@ -252,4 +253,8 @@ public class EditController implements Serializable, Converter {
         String id = ((Playlist) value).getId().toString();
         return (id != null) ? id.toString() : null;
     }
+    
+   
+         
+     
 }

@@ -6,6 +6,7 @@
 package pt.uc.dei.ar.proj3.grupob.facades;
 
 import static java.util.Calendar.YEAR;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 import pt.uc.dei.ar.proj3.grupob.entities.Music;
@@ -13,6 +14,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import pt.uc.dei.ar.proj3.grupob.entities.Playlist;
+import pt.uc.dei.ar.proj3.grupob.entities.Userplay;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.MusicAlreadyExistException;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.YearException;
 
@@ -116,6 +119,16 @@ public class MusicFacade extends AbstractFacade<Music> {
         return false;
     }
     
-
-
+     public List<Music> mostPopular() {
+        List<Music> items = findAll();
+        for (int i = 0; i < items.size(); i++) {
+            Collections.sort(items);
+        }
+        for(Music m: items){
+            System.out.println(m);
+        }
+            return items;
+        }
+     
+     
 }

@@ -5,10 +5,11 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="proj3"/>
-        <property name="User" value="guilherme"/>
-        <property name="Password" value="guilherme"/>
+        <property name="User" value="susana"/>
+        <property name="Password" value="susana"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/proj3?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="myproj3" object-type="user" pool-name="mysql_proj3_sofsPool"/>
+    <jdbc-resource enabled="true" jndi-name="myproj3" object-type="user" pool-name="mysql_proj3_susanaPool"/>
+
 </resources>
