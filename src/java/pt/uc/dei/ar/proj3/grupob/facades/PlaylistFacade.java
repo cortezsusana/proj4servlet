@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.MusicAlreadyExistException;
 import pt.uc.dei.ar.proj3.grupob.entities.Music;
 import pt.uc.dei.ar.proj3.grupob.entities.Userplay;
+import pt.uc.dei.ar.proj3.grupob.jsf.util.PlaylistAlreadyExistException;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.YearException;
 
 /**
@@ -171,10 +172,42 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
         getEntityManager().remove(getEntityManager().merge(user));
     } 
     
-    public void createPlaylist(Playlist p, Userplay u){
-       getEntityManager().persist(p);
-       u.getPlaylists().add(p);
-       getEntityManager().merge(u);
+    public void createPlaylist(Playlist p, Userplay u) throws PlaylistAlreadyExistException{
+        Query q = em.createNamedQuery("Playlist.findByName");
+        q.setParameter("name", p.getName());
+        
+        if(!q.getSingleResult().equals(q)){
+            getEntityManager().persist(p);
+            u.getPlaylists().add(p);
+            getEntityManager().merge(u);
+        } else {
+            throw new PlaylistAlreadyExistException();
+        }
+    }
+    
+    public void addTop10toPLay(Playlist p, Userplay u) {
+        getEntityManager().persist(p);
+        List<Music> topList = musicFacade.top10List();
+        p.setMusics(topList);
+        getEntityManager().merge(p);
+        u.getPlaylists().add(p);
+        getEntityManager().merge(u);
+        for(Music m: topList){
+            m.getPlaylistCollection().add(p);
+            getEntityManager().merge(m);
+        }
+    }
+    
+    public void removePlaylist(Playlist p){
+        for(Music m: p.getMusics()){
+            m.getPlaylistCollection().remove(p);
+            getEntityManager().merge(m);
+        }
+        getEntityManager().remove(getEntityManager().merge(p));
+    }
+
+    public MusicFacade getMusicFacade() {
+        return musicFacade;
     }
 
 }

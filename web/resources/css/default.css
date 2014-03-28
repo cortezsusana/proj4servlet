@@ -83,7 +83,7 @@ a:link:hover, a:visited:hover  {
 }
 
 /*TABELA TOP10*/
-form.top10 th, td th {
+#listTOP10 th, td th {
     font-size: 12px;
     font-weight: 600;
     color: whitesmoke;

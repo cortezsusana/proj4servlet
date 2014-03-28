@@ -219,7 +219,7 @@ public class EditController implements Serializable, Converter {
         } catch (FileNotFoundException e) {
             Logger.getLogger(MusicListManagedBean.class.getName()).log(Level.SEVERE, null, e);
             JsfUtil.addErrorMessage(e.getMessage());
-        } catch (IOException | FileUploadException |MusicAlreadyExistException | YearException e) {
+        } catch (IOException | FileUploadException | MusicAlreadyExistException | YearException e) {
             Logger.getLogger(MusicListManagedBean.class.getName()).log(Level.SEVERE, null, e);
             JsfUtil.addErrorMessage(e.getMessage());
         }

@@ -71,7 +71,6 @@ public class PopularServlet extends HttpServlet {
                 out.println("<tr>");        
                 out.println("<th> RANK </th>");
                 out.println("<th> TITLE </th>");
-                out.println("<th> ARTIST </th>");
                 out.println("<th> NBR TIMES USED</th>");
                 out.println("</tr>");
 
@@ -80,7 +79,6 @@ public class PopularServlet extends HttpServlet {
                     out.println("<tr>");
                     out.println("<td>" + (position) + "</td>");
                     out.println("<td>" + musicFacade.top10List().get(i).getTitle() + "</td>");
-                    out.println("<td>" + musicFacade.top10List().get(i).getArtist() + "</td>");
                     out.println("<td>" + musicFacade.top10List().get(i).getPlaylistCollection().size() + "</td>");
                     out.println("</tr>");
                 }

@@ -17,8 +17,8 @@
         <title>Home</title>
         <script>
             var ajaxRequest;
-            
-    function ajaxRequestChanged() {
+
+            function ajaxRequestChanged() {
                 if (ajaxRequest.readyState === 4) {
                     var texto = ajaxRequest.responseText;
                     document.getElementById("listTOP10").innerHTML = texto;
@@ -31,7 +31,7 @@
                 ajaxRequest.open("GET", "popularservlet?teste=top", true);
                 ajaxRequest.send(null);
                 return false;
-                    }
+            }
         </script>
 
     </h:head>
@@ -70,24 +70,29 @@
                     <h:form>
                         <h:commandButton id="music" class="menuButtons" value="MUSICS" action="#{musicListManagedBean.allMusicList()}" ></h:commandButton>
                         <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>   
-                         <h:commandButton id="top" class="menuButtons" value="POPULAR" action="popular"/>   
+                        <h:commandButton id="top" class="menuButtons" value="POPULAR" action="popular"/>   
                     </h:form>
                 </ui:insert>
             </div>
             <div>
                 <div id="right">
-                    <div> 
+                    <div id="right1"> 
                         <ui:insert name="right1">
-                            <div id="listTOP10"></div>
+                            <div id="listTOP10">
+
+                            </div>
                         </ui:insert>
                     </div>
-                    <div><ui:insert name="right2"> 
-                        
+                    <div id="right2">
+                        <ui:insert name="right2">
+                            <h:form>
+                            <h:commandLink id="top10playlist" value="ADD TOP10 TO MY PLAYLISTS" action="#{playListManagedBean.addPlayTop10()}" />      
+                            </h:form>
                         </ui:insert></div>
                 </div>
                 <div id="content" class="right_content">
                     <ui:insert name="content"> 
-                        
+
                     </ui:insert>
                 </div>
             </div>

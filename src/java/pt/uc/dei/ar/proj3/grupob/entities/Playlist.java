@@ -36,14 +36,10 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Playlist.findByName", query = "SELECT p FROM Playlist p WHERE p.name = :name"),
     @NamedQuery(name = "Playlist.findByUser", query = "SELECT p FROM Playlist p WHERE p.userPlayID = :userPlayID"),
     @NamedQuery(name = "Playlist.findMusics", query = "SELECT musics m FROM Playlist p WHERE p.play_id = :play_id"),
-   // @NamedQuery(name = "Playlist.OrderBySize", query = "SELECT p FROM Playlist p WHERE p.userPlayID = :userPlayID ORDER BY"),
     @NamedQuery(name = "Playlist.OrderByName", query = "SELECT p FROM Playlist p WHERE p.userPlayID = :userPlayID ORDER BY p.name"),
     @NamedQuery(name = "Playlist.OrderByDESCName", query = "SELECT p FROM Playlist p WHERE p.userPlayID = :userPlayID ORDER BY p.name DESC"),
     @NamedQuery(name = "Playlist.OrderByDate", query = "SELECT p FROM Playlist p WHERE p.userPlayID = :userPlayID ORDER BY p.datePlay"), 
     @NamedQuery(name = "Playlist.OrderByDESCDate", query = "SELECT p FROM Playlist p WHERE p.userPlayID = :userPlayID ORDER BY p.datePlay DESC") 
-//@NamedQuery(name = "Playlist.OrderBySize", query = "SELECT COUNT(p.musics) FROM Playlist p ORDER BY COUNT(p.musics)"),
-//@NamedQuery(name = "Playlist.OrderByDESCSize", query = "SELECT p.musics,COUNT(1) FROM Playlist p GROUP BY p.musics ORDER BY COUNT(1) DESC")
-//@NamedQuery(name = "Playlist.OrderBySize", query = "SELECT p, COUNT(pm.musics_MUSIC_ID) FROM Playlist p, playlist_music pm WHERE p.play_id = :music_id ORDER BY COUNT(pm.musics_MUSIC_ID)"),
 })
 public class Playlist implements Serializable {
 
@@ -72,6 +68,7 @@ public class Playlist implements Serializable {
     @JoinTable(name = "playlist_has_music", joinColumns = {
         @JoinColumn(name = "Playlist_playlist_id", referencedColumnName = "playlist_id")}, inverseJoinColumns = {
         @JoinColumn(name = "Music_music_id", referencedColumnName = "music_id")})
+    
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Music> musics;
     

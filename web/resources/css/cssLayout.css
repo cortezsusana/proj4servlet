@@ -50,6 +50,11 @@ h4{
     margin: 0px 350px 0px 150px;
 }
 
+#right2 {
+    padding-top: 30px;
+    text-align: right;
+}
+
 #top a:link, #top a:visited {
   color: white;
   font-weight : bold;

@@ -26,6 +26,7 @@ import pt.uc.dei.ar.proj3.grupob.entities.Playlist;
 import pt.uc.dei.ar.proj3.grupob.facades.MusicFacade;
 import pt.uc.dei.ar.proj3.grupob.facades.PlaylistFacade;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.JsfUtil;
+import pt.uc.dei.ar.proj3.grupob.jsf.util.PlaylistAlreadyExistException;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.YearException;
 
 /**
@@ -132,7 +133,7 @@ public class PlayListManagedBean implements Converter, Serializable {
     }
 
     public String remove(Playlist selected) {
-        playFacade.remove(selected);
+        playFacade.removePlaylist(selected);
         listPlays = playFacade.getUserPlaylists(user.getUser());
         return "listPlaylists";
     }
@@ -152,7 +153,24 @@ public class PlayListManagedBean implements Converter, Serializable {
             newPlay.setUserPlayid(user.getUser());
             newPlay.setDatePlay(new Date());
             playFacade.createPlaylist(newPlay,user.getUser());
-            userPlaylists();
+            //userPlaylists();
+            currentPlaylist=newPlay;
+            newPlay = null;
+            return "listPlaylists";
+        } catch (Exception e) {
+            Logger.getLogger(PlayListManagedBean.class.getName()).log(Level.SEVERE, null, e);
+            JsfUtil.addSuccessMessage("Playlist already exist in your Playlist!");
+            erro = e.getMessage();
+            return null;
+        }
+    }
+    
+    public String addPlayTop10() {
+        try {
+            newPlay.setName("TOP10");
+            newPlay.setUserPlayid(user.getUser());
+            newPlay.setDatePlay(new Date());
+            playFacade.addTop10toPLay(newPlay, user.getUser());
             currentPlaylist=newPlay;
             newPlay = null;
             return "listPlaylists";
@@ -160,8 +178,8 @@ public class PlayListManagedBean implements Converter, Serializable {
             erro = e.getMessage();
             return null;
         }
+        
     }
-    
     /*
      Find users playlist
      */
@@ -198,6 +216,8 @@ public class PlayListManagedBean implements Converter, Serializable {
         }
         return "listMusics";
     }
+    
+  
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
