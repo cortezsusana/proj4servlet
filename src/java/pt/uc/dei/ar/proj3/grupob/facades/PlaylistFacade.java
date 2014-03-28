@@ -113,10 +113,12 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
      * @throws YearException 
      */
     public void addNewMusic(Playlist entity, Music m) throws MusicAlreadyExistException, YearException {
-        try{
-        musicFacade.createMusic(m);
-        entity.getMusics().add(m);
-        getEntityManager().merge(entity);
+        try {
+            musicFacade.createMusic(m);
+            entity.getMusics().add(m);
+            getEntityManager().merge(entity);
+            m.getPlaylistCollection().add(entity);
+            getEntityManager().merge(m);
         }catch(MusicAlreadyExistException e){
             throw new MusicAlreadyExistException();
         }catch(YearException e){

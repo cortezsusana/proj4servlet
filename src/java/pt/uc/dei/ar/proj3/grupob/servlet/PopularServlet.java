@@ -36,14 +36,15 @@ public class PopularServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
+        response.setContentType("text/html;charset=utf-8");
         try (PrintWriter out = response.getWriter()) {
+          
             String parametroTeste = request.getParameter("teste");
             if (parametroTeste.equals("all")) {
-                out.println("<table  xmlns=\"http://www.w3.org/1999/xhtml\" rules=\"all\" style=\"border:solid 1px\" >");
+                out.println("<table xmlns=\"http://www.w3.org/1999/xhtml\" rules=\"all\" style=\"border:solid 1px\" >");
                 out.println("<tr>");
-                out.println("<th> RANK.</th>");
+                out.println("<th> RANK </th>");
                 out.println("<th> TITLE </th>");
                 out.println("<th> ARTIST </th>");
                 out.println("<th> ALBUM </th>");
@@ -65,11 +66,10 @@ public class PopularServlet extends HttpServlet {
                     out.println("</tr>");
                 }
                 out.println("</table>");
-                out.println("<br/><br/><br/>");
             } else {//tabela TOP10
-                out.println("<table  xmlns=\"http://www.w3.org/1999/xhtml\" rules=\"all\" style=\"border:solid 1px\" >");
-                out.println("<tr>");
-                out.println("<th> </th>");
+                out.println("<table  xmlns=\"http://www.w3.org/1999/xhtml\" >");
+                out.println("<tr>");        
+                out.println("<th> RANK </th>");
                 out.println("<th> TITLE </th>");
                 out.println("<th> ARTIST </th>");
                 out.println("<th> NBR TIMES USED</th>");
@@ -85,12 +85,11 @@ public class PopularServlet extends HttpServlet {
                     out.println("</tr>");
                 }
                 out.println("</table>");
-                out.println("<br/><br/><br/>");
+                
             }
         }
     }
     
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

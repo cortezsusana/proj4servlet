@@ -196,7 +196,7 @@ public class MusicListManagedBean {
         return null;
     }
     public List<Music> top10List() {
-        List<Music> popular=null;
+        List<Music> popular = new ArrayList<>();
         if (musicFacade != null) {
             popular = musicFacade.top10List();     
         }

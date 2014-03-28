@@ -22,7 +22,7 @@
                 if (ajaxRequest.readyState === 4) {
                     var texto = ajaxRequest.responseText;
                     document.getElementById("listTOP10").innerHTML = texto;
-                    setTimeout(makeAjaxRequest, 1000);
+                    setTimeout(makeAjaxRequest, 2000);
                 }
             }
             function makeAjaxRequest() {
@@ -30,8 +30,8 @@
                 ajaxRequest.onreadystatechange = ajaxRequestChanged;
                 ajaxRequest.open("GET", "popularservlet?teste=top", true);
                 ajaxRequest.send(null);
-                //return false;
-            }
+                return false;
+                    }
         </script>
 
     </h:head>

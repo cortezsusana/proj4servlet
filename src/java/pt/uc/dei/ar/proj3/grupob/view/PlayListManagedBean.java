@@ -174,10 +174,15 @@ public class PlayListManagedBean implements Converter, Serializable {
      List all musics of the user and allows to choose a playlist
      */
     public String chooseList(Music m) {
-        listPlays = user.getUser().getPlaylists();
-        erro = null;
-        musicId = m.getId();
-        return "addMusicToPlaylist";
+        if (!listPlays.isEmpty()) {
+            listPlays = user.getUser().getPlaylists();
+            erro = null;
+            musicId = m.getId();
+            return "addMusicToPlaylist";
+        } else {
+            JsfUtil.addSuccessMessage("Please insert at least one playlist ");
+            return null;
+        }
     }
 
     /*

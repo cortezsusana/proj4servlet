@@ -94,9 +94,6 @@ public class MusicFacade extends AbstractFacade<Music> {
         q.setMaxResults(10);
         try {
             List<Music> top10 = (List<Music>) q.getResultList();
-            for (Music m : top10) {
-                System.out.println(m);
-            }
             return top10;
         } catch (Exception e) {
             return null;
@@ -107,8 +104,8 @@ public class MusicFacade extends AbstractFacade<Music> {
     * Returns a result list of the most used musics by users by descending order size.  
     */
     public List<Music> mostPopular() {
-        List<Music> items = findAll();
-        Collections.sort(items);
+        Query q = em.createNamedQuery("Music.FindPopular");
+        List<Music> items = q.getResultList();
         return items;
     }
     /**
