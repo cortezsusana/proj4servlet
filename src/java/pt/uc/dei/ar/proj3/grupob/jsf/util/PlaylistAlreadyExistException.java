@@ -12,7 +12,7 @@ package pt.uc.dei.ar.proj3.grupob.jsf.util;
 public class PlaylistAlreadyExistException extends Exception {
 
     public PlaylistAlreadyExistException() {
-        super("This playlist already exists");
+        super("Playlist already exist in your Playlist!");
     }
 
   

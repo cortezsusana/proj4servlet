@@ -156,13 +156,12 @@ public class PlayListManagedBean implements Converter, Serializable {
             //userPlaylists();
             currentPlaylist=newPlay;
             newPlay = null;
-            return "listPlaylists";
-        } catch (Exception e) {
+        } catch (PlaylistAlreadyExistException e) {
             Logger.getLogger(PlayListManagedBean.class.getName()).log(Level.SEVERE, null, e);
-            JsfUtil.addSuccessMessage("Playlist already exist in your Playlist!");
+            //JsfUtil.addErrorMessage(e.getMessage());
             erro = e.getMessage();
-            return null;
         }
+        return "listPlaylists";
     }
     
     public String addPlayTop10() {
@@ -173,12 +172,12 @@ public class PlayListManagedBean implements Converter, Serializable {
             playFacade.addTop10toPLay(newPlay, user.getUser());
             currentPlaylist=newPlay;
             newPlay = null;
-            return "listPlaylists";
-        } catch (Exception e) {
+        } catch (PlaylistAlreadyExistException e) {
+            Logger.getLogger(PlayListManagedBean.class.getName()).log(Level.SEVERE, null, e);
+            //JsfUtil.addErrorMessage(e.getMessage());
             erro = e.getMessage();
-            return null;
         }
-        
+        return "listPlaylists";
     }
     /*
      Find users playlist
