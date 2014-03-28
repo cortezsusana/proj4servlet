@@ -2,9 +2,7 @@ package pt.uc.dei.ar.proj3.grupob.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.math.MathContext;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -46,8 +44,7 @@ public class MusicListManagedBean {
     private Playlist playTarget;
     private Long idPlay;
     private String url;
-    
-    
+
     @Inject
     private MusicFacade musicFacade;
     private Upload upload;
@@ -55,7 +52,7 @@ public class MusicListManagedBean {
     private PlaylistFacade playFacade;
     @Inject
     private UserBean user;
-    
+
     private String erro;
     private boolean viewP;
 
@@ -69,39 +66,23 @@ public class MusicListManagedBean {
     public void initializeMusicList() {
         allMusicList();
         this.m = new Music();
-  
-        //definição da url do servlet
-        FacesContext ctxt = FacesContext.getCurrentInstance();
-        ExternalContext ext = ctxt.getExternalContext();
-        this.url = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
-                + ext.getApplicationContextPath() + "/popularservlet?" + getRandomNumber();
-
     }
-
-    public static int getRandomNumber() {
-        return new Random().nextInt();
-    }
-
-    public Playlist getPlayTarget() {
-        return playTarget;
-    }
-
-    public void setPlayTarget(Playlist playTarget) {
-        this.playTarget = playTarget;
-    }
-
+    
     @PreDestroy
     public void destroyMusicList() {
         System.out.println("FOI DESTRUIDO " + m);
     }
 
-   
-    public Upload getUpload() {
-        return upload;
+    public String getServiceURL() {
+        //definição da url do servlet
+        FacesContext ctxt = FacesContext.getCurrentInstance();
+        ExternalContext ext = ctxt.getExternalContext();
+        return "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort() 
+                + ext.getApplicationContextPath() + "/popularservlet?teste=all&" +getRandomNumber();
     }
 
-    public void setUpload(Upload upload) {
-        this.upload = upload;
+    public static int getRandomNumber() {
+        return new Random().nextInt();
     }
 
     public String prepareCreate() {
@@ -185,22 +166,6 @@ public class MusicListManagedBean {
         return "listMusics";
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getIdPlay() {
-        return idPlay;
-    }
-
-    public void setIdPlay(Long idPlay) {
-        this.idPlay = idPlay;
-    }
-
     public String remove(Music m) {
         if (m.getUserPlayid().equals(user.getUser())) {
             playFacade.removeTotalMusic(m);
@@ -222,39 +187,23 @@ public class MusicListManagedBean {
         }
         return null;
     }
-    
-    public String mostPopularList() {
+
+    public String popularList() {
         if (musicFacade != null) {
             items = musicFacade.mostPopular();
             return "listPopular";
         }
         return null;
     }
-  
-    public UserBean getUser() {
-        return user;
+    public List<Music> top10List() {
+        List<Music> popular=null;
+        if (musicFacade != null) {
+            popular = musicFacade.top10List();     
+        }
+        return popular;
     }
 
-    public void setUser(UserBean user) {
-        this.user = user;
-    }
-
-    public Music getM() {
-        return m;
-    }
-
-    public void setM(Music m) {
-        this.m = m;
-    }
-
-    public Part getPart() {
-        return part;
-    }
-
-    public void setPart(Part part) {
-        this.part = part;
-    }
-
+    
     public List<Music> searchByTitle() {
         items = new ArrayList(musicFacade.getSearchByTitle(search));
         return items;
@@ -348,5 +297,58 @@ public class MusicListManagedBean {
     public void setUrl(String url) {
         this.url = url;
     }
-    
+     public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getIdPlay() {
+        return idPlay;
+    }
+
+    public void setIdPlay(Long idPlay) {
+        this.idPlay = idPlay;
+    }
+
+    public Upload getUpload() {
+        return upload;
+    }
+
+    public void setUpload(Upload upload) {
+        this.upload = upload;
+    }
+    public UserBean getUser() {
+        return user;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
+
+    public Music getM() {
+        return m;
+    }
+
+    public void setM(Music m) {
+        this.m = m;
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
+    }
+    public Playlist getPlayTarget() {
+        return playTarget;
+    }
+
+    public void setPlayTarget(Playlist playTarget) {
+        this.playTarget = playTarget;
+    }
+
 }

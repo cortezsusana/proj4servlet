@@ -151,7 +151,7 @@ public class PlayListManagedBean implements Converter, Serializable {
         try {
             newPlay.setUserPlayid(user.getUser());
             newPlay.setDatePlay(new Date());
-            playFacade.create(newPlay);
+            playFacade.createPlaylist(newPlay,user.getUser());
             userPlaylists();
             currentPlaylist=newPlay;
             newPlay = null;

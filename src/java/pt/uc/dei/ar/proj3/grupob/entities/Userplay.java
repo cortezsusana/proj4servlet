@@ -126,6 +126,7 @@ public class Userplay implements Serializable {
     public void setId(Long id) {
         this.userPlay_id = id;
     }
+    
 
     @Override
     public int hashCode() {

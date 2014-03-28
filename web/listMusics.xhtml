@@ -36,14 +36,10 @@
                                     <h:outputText value="&nbsp;"/>
                                 </f:facet>
                                 <h:outputText value="  "/>
-                                <h:commandButton class="tabButton" action="#{playListManagedBean.chooseList(item)}" value="add to playlist">
-                                    <f:param name="idMusic" value="#{item.id}"></f:param></h:commandButton>
-                            </h:column>
-                            <h:column>
-                                <h:commandButton class="tabButton1" action="#{musicListManagedBean.prepareEdit(item)}" value="edit"/>
-                            </h:column>
-                            <h:column>
-                                <h:commandButton class="tabButtonLast" actionListener="#{musicListManagedBean.remove(item)}" value="delete"/>
+                                <h:commandLink style="margin-right: 10px" action="#{playListManagedBean.chooseList(item)}" value="add to playlist">
+                                    <f:param name="idMusic" value="#{item.id}"></f:param></h:commandLink>    
+                                <h:commandLink style="margin-right: 10px" action="#{musicListManagedBean.prepareEdit(item)}" value="edit"/>
+                                <h:commandLink style="margin-right: 10px" actionListener="#{musicListManagedBean.remove(item)}" value="delete"/>
                             </h:column>
                         </h:dataTable>
                         <div align="right">
@@ -52,7 +48,6 @@
                     </h:form>
                 </f:view>
             </ui:define>
-            <ui:define name="right1"> AQUI TOP 10 </ui:define>
         </ui:composition>
     </h:body>
 </html>

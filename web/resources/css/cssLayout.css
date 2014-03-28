@@ -23,6 +23,7 @@ h4{
 }
 
 #left {
+    display: inline;
     float: left;
     background-color: whitesmoke;
     padding-top: 50px;
@@ -32,29 +33,21 @@ h4{
 }
 
 #right {
-    float: right;
+    display: inline;
+    float:right;
     background-color: whitesmoke;
     padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 20px;
     width: 300px;
-    min-height: 600px;
-}
-
-.center_content {
-    position: relative;
-    background-color: whitesmoke;
-    padding: 5px;
-}
-
-.left_content {
-    background-color: whitesmoke;
-    padding: 5px;
-    margin-left: 150px;
+    min-height: 600px; 
 }
 
 .right_content {
-    background-color: whitesmoke;
+    position: relative;
     padding-top: 50px;
-    margin: 0px 300px 0px 150px;
+    background-color: whitesmoke;
+    margin: 0px 350px 0px 150px;
 }
 
 #top a:link, #top a:visited {
@@ -79,9 +72,9 @@ h4{
     text-decoration: none;
 }
 .menuButtons:hover{
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(36,51,64,.75);
     color: whitesmoke;
-    padding: 5px 5px 5px 50px;
+    padding: 5px 5px 5px 20px;
     font-weight: bold;
 }
 .menuButtons:active {
@@ -193,7 +186,7 @@ h4{
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(0,0,0,.9);
+  background: rgba(36,51,64,.75);
   border: 0;
   z-index: 100;
   color: white;
@@ -202,9 +195,9 @@ h4{
   padding-right: 0px;
   padding-bottom: 0px;
 
-  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-     -moz-box-shadow: 0 3px 3px rgba(0,0,0,0.1);
-          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 3px 3px rgba(36,51,64,.75);
+     -moz-box-shadow: 0 3px 3px rgba(36,51,64,.75);
+          box-shadow: 0 3px 3px rgba(36,51,64,.75);
 }
 
 #navigation a{
@@ -213,7 +206,7 @@ h4{
 
 #navigation a:hover{
   color: white;
-  background-color: rgba(0,0,0,.9);
+  background-color: rgba(36,51,64,.75);
 }
 
 #colLeft {
@@ -237,26 +230,26 @@ h4{
 .search{
     width: 100px;
     min-height: 100%;
-    border: rgba(0,0,0,.9); 
+    border: rgba(36,51,64,.75); 
     padding:0px;
     margin: 0px;
     text-align: right;
-    color: rgba(0,0,0,.9);
+    color: rgba(36,51,64,.75);
     font-size: 12px;
 }
 .inputsearch{
     width: 150px;
     min-height: 100%;
-    border: rgba(0,0,0,.9);
-    color: rgba(0,0,0,.9);
+    border: rgba(36,51,64,.75);
+    color: rgba(36,51,64,.75);
     font-size: 12px;
 }
 .optionUser{
     width: 110px;
     height: 100%;
-    border: rgba(0,0,0,.9);
+    border: rgba(36,51,64,.75);
     text-align: right;
-    color: rgba(0,0,0,.9);
+    color: rgba(36,51,64,.75);
     font-size: 12px;
 }
 .optionPlay{
@@ -271,7 +264,7 @@ h4{
     background-color: whitesmoke;
     border: 1px;
     border-style: solid;
-    border-bottom-color: rgba(0,0,0,.9);
+    border-bottom-color: rgba(36,51,64,.75);
     text-align: left;
     border-style: none;
     text-decoration: none;
@@ -281,7 +274,7 @@ h4{
     text-align:center;
 }
 .but1:hover {
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(36,51,64,.75);
     color: whitesmoke;
     font-weight: bold;
 }

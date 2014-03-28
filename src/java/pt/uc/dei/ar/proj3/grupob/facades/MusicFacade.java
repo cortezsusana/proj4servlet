@@ -85,7 +85,32 @@ public class MusicFacade extends AbstractFacade<Music> {
             return null;
         }
     }
-
+    
+    /*
+    * Returns a result list of ten most used musics by users.  
+    */
+    public List<Music> top10List() {
+        Query q = em.createNamedQuery("Music.FindPopular");
+        q.setMaxResults(10);
+        try {
+            List<Music> top10 = (List<Music>) q.getResultList();
+            for (Music m : top10) {
+                System.out.println(m);
+            }
+            return top10;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    /*
+    * Returns a result list of the most used musics by users by descending order size.  
+    */
+    public List<Music> mostPopular() {
+        List<Music> items = findAll();
+        Collections.sort(items);
+        return items;
+    }
     /**
      * create new music
      * @param entity
@@ -104,6 +129,7 @@ public class MusicFacade extends AbstractFacade<Music> {
         }
 
     }
+     
 
     /**
      * see if path already exist
@@ -119,15 +145,7 @@ public class MusicFacade extends AbstractFacade<Music> {
         return false;
     }
     
-     public List<Music> mostPopular() {
-        List<Music> items = findAll();
-        Collections.sort(items);
-        
-        for(Music m: items){
-            System.out.println(m);
-        }
-            return items;
-        }
+    
      
      
 }

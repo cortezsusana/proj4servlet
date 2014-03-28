@@ -28,7 +28,7 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
     private EntityManager em;
     @Inject
     private MusicFacade musicFacade;
-
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -100,6 +100,8 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
         } else {
             entity.getMusics().add(m);
             getEntityManager().merge(entity);
+            m.getPlaylistCollection().add(entity);
+            getEntityManager().merge(m);
         }
     }
 
@@ -124,13 +126,25 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
 
     /**
      * remove the music m from all playlists
-     * @param m 
+     *
+     * @param p
+     * @param m
      */
+    public void removeMusicFromPlays(Playlist p, Music m) {
+        p.getMusics().remove(m);
+        getEntityManager().merge(p);
+        m.getPlaylistCollection().remove(p);
+        getEntityManager().merge(m);
+
+    }
+    //remove the music
     public void removeMusicFromPlays(Music m) {
         for (Playlist p : findAll()) {
             if (p.getMusics().contains(m)) {
                 p.getMusics().remove(m);
                 getEntityManager().merge(p);
+                m.getPlaylistCollection().remove(p);
+                getEntityManager().merge(m);
             }
         }
     }
@@ -150,10 +164,15 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
      */
     public void deleteUser(Userplay user) {
         for (Music m : user.getMusics()) {
-            removeMusicFromPlays(m);
+             removeMusicFromPlays(m);
         }
         getEntityManager().remove(getEntityManager().merge(user));
+    } 
+    
+    public void createPlaylist(Playlist p, Userplay u){
+       getEntityManager().persist(p);
+       u.getPlaylists().add(p);
+       getEntityManager().merge(u);
     }
-
 
 }

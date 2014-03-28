@@ -201,7 +201,7 @@ public class EditController implements Serializable, Converter {
     public String removeMusic(Music music) {
         currentPlay = playFacade.find(idPlay);
         currentPlay.getMusics().remove(music);
-        playFacade.edit(currentPlay);
+        playFacade.removeMusicFromPlays(currentPlay, music);
         return null;
     }
 

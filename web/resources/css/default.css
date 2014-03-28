@@ -33,27 +33,25 @@ form.list_form th, td th {
     padding-bottom: 5px;
     padding-left: 3px;
     padding-right: 3px;
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(36,51,64,.75);
 }
 
 td {
     vertical-align: top;
-    padding-bottom: 8px;
     font-size: small;
 }
 
 form.list_form td, td td {
     text-align: left;
     vertical-align: baseline;
-    padding-bottom: 0px;
 }
 
-tr.odd_row {
+form.list_form tr.odd_row {
     background-color: #fefeff;
     color: #4e6a71;
 }
 
-tr.even_row {
+form.list_form tr.even_row {
     background-color: whitesmoke;
     color: #4e6a71;
 }
@@ -69,7 +67,6 @@ form.createMusic th, td th{
     width: 400px;
     border-spacing: 0;
     empty-cells: show;
-    padding-top: 0px;
     text-align: left;
 }
 
@@ -85,37 +82,35 @@ a:link:hover, a:visited:hover  {
     text-decoration : underline;
 }
 
-#styletable thead{
+/*TABELA TOP10*/
+form.top10 th, td th {
     font-size: 12px;
     font-weight: 600;
     color: whitesmoke;
-    border-top-style: none;
-    border-bottom-style: none;
-    border-left-style: none;
-    border-right-style: none;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
     text-align: left;
+    border-top-style: none;
+    border-top-color: #CC9335;
+    border-bottom-style: none;
+    border-bottom-color: #CC9335;
+    border-left-style: none;
+    border-left-color: #CC9335;
+    border-right-style: none;
+    border-right-color: #CC9335;
     padding-top: 4px;
     padding-bottom: 5px;
     padding-left: 3px;
     padding-right: 3px;
-    background-color: rgba(0,0,0,.9);
+    background-color: #CC9335;
+}
+form.top10 td, td td {
+    text-align: left;
+    vertical-align: baseline;
+    color: #4e6a71;
+}
+form.top10 td, td td {
+    text-align: left;
+    vertical-align: baseline;
+    color: #4e6a71;
 }
 
-#styletable td{
-    vertical-align: top;
-    padding-bottom: 8px;
-    font-size: small;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-width: 0.1px;
-    border-bottom-width: 0.1px;
-    border-left-width: 0.1px;
-    border-right-width: 0.1px;
 
-}

@@ -51,21 +51,25 @@
                     <h:form>
                         <h:commandButton id="music" class="menuButtons" value="MUSICS" action="#{musicListManagedBean.allMusicList()}" ></h:commandButton>
                         <h:commandButton id="playlist" class="menuButtons" value="MY PLAYLISTS" action="listPlaylists"/>   
-                         <h:commandButton id="pop" class="menuButtons" value="POPULAR" action="popular"/>   
+                         <h:commandButton id="top" class="menuButtons" value="POPULAR" action="popular"/>   
                     </h:form>
                 </ui:insert>
             </div>
             <div>
                 <div id="right">
-                    <div><ui:insert name="right1">  
+                    <div> 
+                        <ui:insert name="right1"> 
+                            <div >
+                                 <ui:include src="#{musicListManagedBean.serviceURL}"></ui:include>
+                            </div>
+                        </ui:insert>
+                    </div>
+                    <div><ui:insert name="right2"> 
                         </ui:insert></div>
-                    <div><ui:insert name="right2"> </ui:insert></div>
-
                 </div>
                 <div id="content" class="right_content">
                     <ui:insert name="content"> 
-
-
+                        
                     </ui:insert>
                 </div>
             </div>

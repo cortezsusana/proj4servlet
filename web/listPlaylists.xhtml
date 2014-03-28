@@ -14,7 +14,7 @@
                     <h:form styleClass="list_form">
                             <h:panelGroup binding="#{editController.listPlaylist}" rendered="true">  
                                     <h:dataTable value="#{editController.listPlays}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="odd_row,even_row" rules="all" style="border:solid 1px">
-                                        <f:facet name="header">PLAYLIST LYBRARY</f:facet>
+                                        
                                         <h:column>
                                             <f:facet name="header">
                                                 <h:panelGrid columns="2">
@@ -25,7 +25,7 @@
                                                     </h:panelGroup>
                                                 </h:panelGrid>
                                             </f:facet>
-                                            #{item.name}
+                                            <h:commandLink action="#{editController.show(item)}" value="#{item.name}"/>
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">
@@ -57,11 +57,9 @@
                                         </h:column>
                                         <h:inputHidden id="id" value="#{playListManagedBean.idPlay}" />
                                         <h:column>
-                                            <h:commandButton class="tabButton1" action="#{playListManagedBean.remove(item)}" value="delete"/>
+                                            <h:commandLink action="#{playListManagedBean.remove(item)}" value="delete"/>
                                         </h:column>
-                                        <h:column>
-                                            <h:commandButton class="tabButtonLast" action="#{editController.show(item)}" value="show"/>
-                                        </h:column>
+                                       
                                     </h:dataTable>
                             </h:panelGroup>
                             <h:panelGroup binding="#{editController.viewPlaylist}" rendered="false">
