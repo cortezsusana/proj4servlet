@@ -15,9 +15,28 @@
               700italic,400,300,700,600|Volkhov:400,400italic,700,700italic|Lora:400,700,400italic,700italic' 
               rel='stylesheet' type='text/css'></link>
         <title>Home</title>
+        <script>
+            var ajaxRequest;
+            
+    function ajaxRequestChanged() {
+                if (ajaxRequest.readyState === 4) {
+                    var texto = ajaxRequest.responseText;
+                    document.getElementById("listTOP10").innerHTML = texto;
+                    setTimeout(makeAjaxRequest, 1000);
+                }
+            }
+            function makeAjaxRequest() {
+                ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = ajaxRequestChanged;
+                ajaxRequest.open("GET", "popularservlet?teste=top", true);
+                ajaxRequest.send(null);
+                //return false;
+            }
+        </script>
+
     </h:head>
 
-    <h:body>
+    <h:body onload="makeAjaxRequest();">
         <nav id="navigation" role="navigation">
             <ui:insert name="top">
                 <h:form> 
@@ -58,13 +77,12 @@
             <div>
                 <div id="right">
                     <div> 
-                        <ui:insert name="right1"> 
-                            <div >
-                                 <ui:include src="#{musicListManagedBean.serviceURL}"></ui:include>
-                            </div>
+                        <ui:insert name="right1">
+                            <div id="listTOP10"></div>
                         </ui:insert>
                     </div>
                     <div><ui:insert name="right2"> 
+                        
                         </ui:insert></div>
                 </div>
                 <div id="content" class="right_content">

@@ -48,7 +48,7 @@ public class PopularServlet extends HttpServlet {
                 out.println("<th> ARTIST </th>");
                 out.println("<th> ALBUM </th>");
                 out.println("<th> YEAR </th>");
-                out.println("<th> Nr OF TIMES MUSIC HAS BEEN USED </th>");
+                out.println("<th> NBR TIMES USED </th>");
                 out.println("<th> USERNAME </th>");
                 out.println("</tr>");
 
@@ -65,14 +65,14 @@ public class PopularServlet extends HttpServlet {
                     out.println("</tr>");
                 }
                 out.println("</table>");
+                out.println("<br/><br/><br/>");
             } else {//tabela TOP10
                 out.println("<table  xmlns=\"http://www.w3.org/1999/xhtml\" rules=\"all\" style=\"border:solid 1px\" >");
                 out.println("<tr>");
-                out.println("<th> RANK.</th>");
+                out.println("<th> </th>");
                 out.println("<th> TITLE </th>");
                 out.println("<th> ARTIST </th>");
-                out.println("<th> ALBUM </th>");
-                out.println("<th> Nr OF TIMES MUSIC HAS BEEN USED </th>");
+                out.println("<th> NBR TIMES USED</th>");
                 out.println("</tr>");
 
                 for (int i = 0; i < musicFacade.top10List().size(); i++) {
@@ -81,11 +81,11 @@ public class PopularServlet extends HttpServlet {
                     out.println("<td>" + (position) + "</td>");
                     out.println("<td>" + musicFacade.top10List().get(i).getTitle() + "</td>");
                     out.println("<td>" + musicFacade.top10List().get(i).getArtist() + "</td>");
-                    out.println("<td>" + musicFacade.top10List().get(i).getAlbum() + "</td>");
                     out.println("<td>" + musicFacade.top10List().get(i).getPlaylistCollection().size() + "</td>");
                     out.println("</tr>");
                 }
                 out.println("</table>");
+                out.println("<br/><br/><br/>");
             }
         }
     }
