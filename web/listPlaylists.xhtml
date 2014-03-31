@@ -12,102 +12,103 @@
             <ui:define name="content">
                 <f:view>
                     <h:form styleClass="list_form">
-                            <h:panelGroup binding="#{editController.listPlaylist}" rendered="true">  
-                                    <h:dataTable value="#{editController.listPlays}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="odd_row,even_row" rules="all" style="border:solid 1px">
-                                        
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:panelGrid columns="2">
-                                                    <h:panelGroup>NAME</h:panelGroup>
-                                                    <h:panelGroup>
-                                                        <h:commandButton image="/resources/img/Arrow-sans-up-32.png" action="#{editController.orderBy('ASC', 'Name')}"/>
-                                                        <h:commandButton image="/resources/img/Arrow-sans-down-32.png" action="#{editController.orderBy('DESC','Name')}" value="DESC"/>
-                                                    </h:panelGroup>
-                                                </h:panelGrid>
-                                            </f:facet>
-                                            <h:commandLink action="#{editController.show(item)}" value="#{item.name}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:panelGrid columns="2">
-                                                    <h:panelGroup>DATE</h:panelGroup>
-                                                    <h:panelGroup>
-                                                        <h:commandButton image="/resources/img/Arrow-sans-up-32.png" action="#{editController.orderBy('ASC', 'Date')}" />
-                                                        <h:commandButton image="/resources/img/Arrow-sans-down-32.png" action="#{editController.orderBy('DESC','Date')}" value="DESC"/>
-                                                    </h:panelGroup>
-                                                </h:panelGrid>
-                                            </f:facet>
-                                            #{item.datePlay}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">USER OWNER</f:facet>
-                                                #{item.userPlayid.name}
-                                        </h:column>
-                                        <h:column class="alignColCenter">
-                                            <f:facet name="header">
-                                                <h:panelGrid columns="2">
-                                                    <h:panelGroup>SIZE</h:panelGroup>
-                                                    <h:panelGroup>
-                                                        <h:commandButton image="/resources/img/Arrow-sans-up-32.png" action="#{editController.orderBySize('ASC')}"  />
-                                                        <h:commandButton image="/resources/img/Arrow-sans-down-32.png" action="#{editController.orderBySize('DESC')}" />
-                                                    </h:panelGroup>
-                                                </h:panelGrid>
-                                            </f:facet>
-                                            #{item.musics.size()}
-                                        </h:column>
-                                        <h:inputHidden id="id" value="#{playListManagedBean.idPlay}" />
-                                        <h:column>
-                                            <h:commandLink action="#{playListManagedBean.remove(item)}" value="delete"/>
-                                        </h:column>
-                                       
-                                    </h:dataTable>
-                            </h:panelGroup>
-                            <h:panelGroup binding="#{editController.viewPlaylist}" rendered="false">
-                              <div>
-                                    <br></br>
-                                    <h:outputLabel value="PLAYLIST "/>
-                                    
-                                    <h:inputHidden value="#{editController.currentPlay}" converter="#{editController}"/>
-                                    <h:inputText value="#{editController.currentPlay.name}" />
-                                    <h:commandButton value="SAVE" action="#{editController.edit()}"/>
-                                    <h:dataTable value="#{editController.currentPlay.musics}" var="musics" border="0" cellpadding="2" cellspacing="0" rowClasses="odd_row,even_row" rules="all" style="border:solid 1px">
-                                        <f:facet name="header">PLAYLIST MUSICS</f:facet>
-                                        <h:column>
-                                            <f:facet name="header">TITLE</f:facet>
-                                                #{musics.title}
-                                        </h:column>
-                                        <h:column>
+                        <h:panelGroup binding="#{editController.listPlaylist}" rendered="true">  
+                            <h:dataTable value="#{editController.listPlays}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="odd_row,even_row" rules="all" style="border:solid 1px">
 
-                                            <f:facet name="header">ARTIST</f:facet>
-                                                #{musics.artist}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">ALBUM</f:facet>
-                                                #{musics.album}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">YEAR</f:facet>
-                                                #{musics.yearAlbum}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">MUSIC OWNER</f:facet>
-                                                #{musics.userPlayid.name}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="&nbsp;"/>
-                                            </f:facet>
-                                            <h:outputText value=" "/>
-                                            <h:commandButton class="tabButton1" actionListener="#{editController.removeMusic(musics)}" value="delete"/>
-                                        </h:column>
-                                    </h:dataTable>
-                                    <div align="right">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:panelGrid columns="2">
+                                            <h:panelGroup>NAME</h:panelGroup>
+                                            <h:panelGroup>
+                                                <h:commandButton image="/resources/img/Arrow-sans-up-32.png" action="#{editController.orderBy('ASC', 'Name')}"/>
+                                                <h:commandButton image="/resources/img/Arrow-sans-down-32.png" action="#{editController.orderBy('DESC','Name')}" value="DESC"/>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </f:facet>
+                                    <h:commandLink action="#{editController.show(item)}" value="#{item.name}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:panelGrid columns="2">
+                                            <h:panelGroup>DATE</h:panelGroup>
+                                            <h:panelGroup>
+                                                <h:commandButton image="/resources/img/Arrow-sans-up-32.png" action="#{editController.orderBy('ASC', 'Date')}" />
+                                                <h:commandButton image="/resources/img/Arrow-sans-down-32.png" action="#{editController.orderBy('DESC','Date')}" value="DESC"/>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </f:facet>
+                                    #{item.datePlay}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">USER OWNER</f:facet>
+                                        #{item.userPlayid.name}
+                                </h:column>
+                                <h:column class="alignColCenter">
+                                    <f:facet name="header">
+                                        <h:panelGrid columns="2">
+                                            <h:panelGroup>SIZE</h:panelGroup>
+                                            <h:panelGroup>
+                                                <h:commandButton image="/resources/img/Arrow-sans-up-32.png" action="#{editController.orderBySize('ASC')}"  />
+                                                <h:commandButton image="/resources/img/Arrow-sans-down-32.png" action="#{editController.orderBySize('DESC')}" />
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </f:facet>
+                                    #{item.musics.size()}
+                                </h:column>
+                                <h:inputHidden id="id" value="#{playListManagedBean.idPlay}" />
+                                <h:column>
+                                    <h:commandLink action="#{playListManagedBean.remove(item)}" value="delete"/>
+                                </h:column>
+
+                            </h:dataTable>
+                        </h:panelGroup>
+                        <h:panelGroup binding="#{editController.viewPlaylist}" rendered="false">
+                            <div>
+                                <br></br>
+                                <h:outputLabel value="PLAYLIST "/>
+
+                                <h:inputHidden value="#{editController.currentPlay}" converter="#{editController}"/>
+                                <h:inputText value="#{editController.currentPlay.name}" />
+                                <h:commandButton value="RENAME" action="#{editController.edit()}"/>
+                                <h:messages globalOnly="true" />
+                                <h:dataTable value="#{editController.currentPlay.musics}" var="musics" border="0" cellpadding="2" cellspacing="0" rowClasses="odd_row,even_row" rules="all" style="border:solid 1px">
+                                    <!--<f:facet name="header">PLAYLIST MUSICS</f:facet>-->
+                                    <h:column>
+                                        <f:facet name="header">TITLE</f:facet>
+                                            #{musics.title}
+                                    </h:column>
+                                    <h:column>
+
+                                        <f:facet name="header">ARTIST</f:facet>
+                                            #{musics.artist}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">ALBUM</f:facet>
+                                            #{musics.album}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">YEAR</f:facet>
+                                            #{musics.yearAlbum}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">MUSIC OWNER</f:facet>
+                                            #{musics.userPlayid.name}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="&nbsp;"/>
+                                        </f:facet>
+                                        <h:outputText value=" "/>
+                                        <h:commandButton class="tabButton1" actionListener="#{editController.removeMusic(musics)}" value="delete"/>
+                                    </h:column>
+                                </h:dataTable>
+                                <div align="right">
                                     <h:commandButton  value="ADD NEW MUSIC" action="#{musicListManagedBean.prepareCreateMusicFromPlaylist(editController.currentPlay)}">
                                         <f:setPropertyActionListener value="#{editController.currentPlay}" target="#{musicListManagedBean.playTarget}"/>
                                     </h:commandButton>
-                                    </div>
                                 </div>
-                            </h:panelGroup>
+                            </div>
+                        </h:panelGroup>
                     </h:form>
                     <h:form styleClass="list_form">
                         <h:panelGroup binding="#{editController.newPlaylist}" rendered="true">
@@ -115,7 +116,7 @@
                             <h:outputLabel id="name" value="PLAYLIST NAME"/>
                             <h:inputText id="itName" value="#{playListManagedBean.newPlay.name}"/>
                             <h:commandButton id="submit" value="ADD PLAYLIST" action="#{playListManagedBean.createPlay()}" />
-                             <h:messages/>
+                            <h:messages globalOnly="true" />
                             <h:outputLabel  style="color:red" value="#{playListManagedBean.erro}" />
                         </h:panelGroup>
                     </h:form>

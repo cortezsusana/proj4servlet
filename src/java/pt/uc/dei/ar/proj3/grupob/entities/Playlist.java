@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -69,7 +70,7 @@ public class Playlist implements Serializable {
         @JoinColumn(name = "Playlist_playlist_id", referencedColumnName = "playlist_id")}, inverseJoinColumns = {
         @JoinColumn(name = "Music_music_id", referencedColumnName = "music_id")})
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
     private List<Music> musics;
     
     public Playlist() {

@@ -173,8 +173,9 @@ public class EditController implements Serializable, Converter {
     }
 
     public String edit() {
-        playFacade.edit(currentPlay);
+        playFacade.editPlaylist(currentPlay,user.getUser());
         return "listPlaylists";
+        
     }
 
     public void orderBy(String str, String column) {

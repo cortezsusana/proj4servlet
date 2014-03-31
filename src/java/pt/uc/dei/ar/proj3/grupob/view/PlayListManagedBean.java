@@ -20,7 +20,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import pt.uc.dei.ar.proj3.grupob.ejb.UserBean;
 import pt.uc.dei.ar.proj3.grupob.jsf.util.MusicAlreadyExistException;
-
 import pt.uc.dei.ar.proj3.grupob.entities.Music;
 import pt.uc.dei.ar.proj3.grupob.entities.Playlist;
 import pt.uc.dei.ar.proj3.grupob.facades.MusicFacade;
@@ -155,7 +154,7 @@ public class PlayListManagedBean implements Converter, Serializable {
             playFacade.createPlaylist(newPlay,user.getUser());
             currentPlaylist=newPlay;
             newPlay = null;
-        } catch (PlaylistAlreadyExistException e) {
+        } catch (Exception e) {
             Logger.getLogger(PlayListManagedBean.class.getName()).log(Level.SEVERE, null, e);
             //JsfUtil.addErrorMessage(e.getMessage());
             erro = e.getMessage();
@@ -164,13 +163,14 @@ public class PlayListManagedBean implements Converter, Serializable {
     }
     
     public String addPlayTop10() {
+        
         try {
             newPlay.setName("TOP10");
             newPlay.setUserPlayid(user.getUser());
             newPlay.setDatePlay(new Date());
             playFacade.addTop10toPLay(newPlay, user.getUser());
-            currentPlaylist=newPlay;
-            newPlay = null;
+            currentPlaylist = newPlay;
+            newPlay=null;
         } catch (PlaylistAlreadyExistException e) {
             Logger.getLogger(PlayListManagedBean.class.getName()).log(Level.SEVERE, null, e);
             erro = e.getMessage();

@@ -29,7 +29,8 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
     private EntityManager em;
     @Inject
     private MusicFacade musicFacade;
-    
+ 
+   
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -187,7 +188,6 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
             createPlaylist(p, u);
             List<Music> topList = musicFacade.top10List();
             p.setMusics(topList);
-            getEntityManager().merge(p);
             for (Music m : topList) {
                 m.getPlaylistCollection().add(p);
                 getEntityManager().merge(m);
@@ -209,9 +209,21 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
         return musicFacade;
     }
     
+    public void editPlaylist(Playlist entity, Userplay u) {
+        getEntityManager().merge(entity);
+        List<Playlist> p = u.getPlaylists();
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).getPlay_id() == entity.getId()) {
+                p.get(i).setName(entity.getName());
+                getEntityManager().merge(u);
+            }
+        }
+    }
+    
+
     public boolean existPlaylist(Playlist p) {
         for (Playlist pl : findAll()) {
-            if (pl.getName().equals(p.getName())) {
+            if (pl.getUserPlayid().equals(p.getUserPlayID()) &&  pl.getName().equals(p.getName())) {
                 return true;
             }
         }

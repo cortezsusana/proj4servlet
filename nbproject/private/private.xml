@@ -3,6 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/web/addMusicToPlaylist.xhtml</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/ejb/UserBean.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/view/PlayListManagedBean.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/entities/Userplay.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/view/EditController.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/jsf/util/JsfUtil.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/web/listPlaylists.xhtml</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/facades/AbstractFacade.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/entities/Playlist.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/facades/PlaylistFacade.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/web/template.xhtml</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/facades/MusicFacade.java</file>
+            <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/src/java/pt/uc/dei/ar/proj3/grupob/entities/Music.java</file>
             <file>file:/F:/Susana/CFPJ/2t.PAJ/Projeto4/web/resources/css/cssLayout.css</file>
         </group>
     </open-files>

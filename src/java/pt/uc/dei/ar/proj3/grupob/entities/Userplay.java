@@ -64,7 +64,7 @@ public class Userplay implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userPlayID")
     private List<Music> musics;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userPlayID")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "userPlayID")
     private List<Playlist> playlists;
 
     public Userplay() {
