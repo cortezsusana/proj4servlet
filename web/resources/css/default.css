@@ -20,15 +20,15 @@ form.list_form th, td th {
     font-size: 12px;
     font-weight: 600;
     color: whitesmoke;
-    border-top-style: none;
-    border-bottom-style: none;
+    border-top-style: solid;
+    border-bottom-style: solid;
     border-left-style: none;
     border-right-style: none;
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-left-width: 1px;
     border-right-width: 1px;
-    text-align: left;
+    text-align: center;
     padding-top: 4px;
     padding-bottom: 5px;
     padding-left: 3px;
@@ -42,8 +42,8 @@ td {
 }
 
 form.list_form td, td td {
-    text-align: left;
     vertical-align: baseline;
+    padding-left: 5px;
 }
 
 form.list_form tr.odd_row {
@@ -65,7 +65,7 @@ form.createMusic th, td th{
 
 .tabelaDetail{
     width: 400px;
-    border-spacing: 0;
+    border-spacing: 10px;
     empty-cells: show;
     text-align: left;
 }
@@ -82,35 +82,68 @@ a:link:hover, a:visited:hover  {
     text-decoration : underline;
 }
 
+/*TABELA POPULAR*/
+#popular th, td th {
+    font-size: 12px;
+    font-weight: 600;
+    color: whitesmoke;
+    text-align: center;
+    border-top-style: solid;
+    border-top-color: rgba(36,51,64,.75);
+    border-bottom-style: solid;
+    border-bottom-color: rgba(36,51,64,.75);
+    border-left-style: none;
+    border-left-color: rgba(36,51,64,.75);
+    border-right-style: none;
+    border-right-color: rgba(36,51,64,.75);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: rgba(36,51,64,.75);
+}
+
+#popular td, td td {
+    vertical-align: baseline;
+    color: #4e6a71;
+    padding-left: 5px;
+    border-top-style: solid;
+    border-top-color: rgba(36,51,64,.75);
+    border-bottom-style: solid;
+    border-bottom-color: rgba(36,51,64,.75);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+
+
 /*TABELA TOP10*/
 #listTOP10 th, td th {
     font-size: 12px;
     font-weight: 600;
     color: whitesmoke;
-    text-align: left;
-    border-top-style: none;
-    border-top-color: #CC9335;
-    border-bottom-style: none;
-    border-bottom-color: #CC9335;
-    border-left-style: none;
-    border-left-color: #CC9335;
-    border-right-style: none;
-    border-right-color: #CC9335;
+    text-align: center;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgba(36,51,64,.75);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(36,51,64,.75);
     padding-top: 4px;
     padding-bottom: 5px;
-    padding-left: 3px;
-    padding-right: 3px;
     background-color: #CC9335;
 }
-form.top10 td, td td {
-    text-align: left;
+#listTOP10 td, td td {
     vertical-align: baseline;
     color: #4e6a71;
-}
-form.top10 td, td td {
-    text-align: left;
-    vertical-align: baseline;
-    color: #4e6a71;
+    padding-left: 5px;
 }
 
+.alignColCenter{
+    text-align: center;
+}
 

@@ -25,11 +25,11 @@
                     </tr>
                     <tr>
                         <td><h:outputLabel  class= "out" id="pass" value="PASSWORD" /></td>
-                        <td><h:inputSecret id="passInserted" value="#{signUpManagedBean.user.password }" required="true" requiredMessage="Password field is required"/></td>
+                        <td><h:inputSecret id="passInserted" redisplay="false" value="#{signUpManagedBean.user.password }" required="true" requiredMessage="Password field is required"/></td>
                     </tr>
                     <tr>
                         <td><h:outputLabel class= "out" id="pass1" value="CONFIRM PASS" /></td>
-                        <td><h:inputSecret id="passConfInserted" value="#{signUpManagedBean.passConf}" required="true" requiredMessage="Confirm password"/></td>
+                        <td><h:inputSecret id="passConfInserted" redisplay="false" value="#{signUpManagedBean.passConf}" required="true" requiredMessage="Confirm password"/></td>
                     </tr>
                     <tr>
                         <td></td>

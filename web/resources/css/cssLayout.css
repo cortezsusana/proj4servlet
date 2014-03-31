@@ -26,7 +26,7 @@ h4{
     display: inline;
     float: left;
     background-color: whitesmoke;
-    padding-top: 50px;
+    padding-top: 60px;
     padding-left: 0px;
     width: 150px;
     min-height: 600px;
@@ -36,8 +36,8 @@ h4{
     display: inline;
     float:right;
     background-color: whitesmoke;
-    padding-top: 50px;
-    padding-left: 30px;
+    padding-top: 60px;
+    padding-left: 0px;
     padding-right: 20px;
     width: 300px;
     min-height: 600px; 
@@ -45,7 +45,7 @@ h4{
 
 .right_content {
     position: relative;
-    padding-top: 50px;
+    padding-top: 60px;
     background-color: whitesmoke;
     margin: 0px 350px 0px 150px;
 }
@@ -190,10 +190,11 @@ h4{
   position: fixed;
   top: 0;
   width: 100%;
+  vertical-align: baseline;
   background: rgba(36,51,64,.75);
   border: 0;
   z-index: 100;
-  color: white;
+  color: whitesmoke;
   padding-top: 0px;
   padding-left: 5px;
   padding-right: 0px;
@@ -226,9 +227,14 @@ h4{
   display: inline;
   padding:0px; 
 }
+#colWelcome {  
+  display: inline;
+  float: left;
+}
 #colRight {  
   display: inline;
   float: right;
+  width:150px;
 }
 
 .search{
@@ -285,4 +291,138 @@ h4{
 .but1:active {
     position:relative;
     top:1px;
+}
+/* buttons dropdown list */
+/* GLOBALS */
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0px;
+}
+
+::selection {
+    background: transparent; 
+}
+
+::-moz-selection {
+    background: transparent; 
+}
+
+.wrapper-demo {
+    margin: 0px 0 0 0;
+    *zoom: 1;
+    font-weight: 400;
+}
+
+.wrapper-demo:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+/* DEMO 5 */
+
+.wrapper-dropdown-5 {
+    /* Size & position */
+    position: relative;
+    width: 150px;
+    margin: 0px 20px 0px 0px; 
+    padding: 5px 2px;
+
+    /* Styles */
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-5:after { /* Little arrow */
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 45%;
+    right: 15px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: whitesmoke transparent;
+}
+
+.wrapper-dropdown-5 .dropdown {
+    /* Size & position */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0px;
+
+    /* Styles */
+    background: whitesmoke;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-top: none;
+    border-bottom: none;
+    list-style: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+
+    /* Hiding */
+    max-height: 0;
+    overflow: hidden;
+}
+
+.wrapper-dropdown-5 .dropdown li {
+    padding: 0 10px ;
+}
+
+.wrapper-dropdown-5 .dropdown li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 3px 0;
+    transition: all 0.3s ease-out;
+    border-bottom: 1px solid #e6e8ea;
+}
+
+.wrapper-dropdown-5 .dropdown li:last-of-type a {
+    border: none;
+}
+
+.wrapper-dropdown-5 .dropdown li i {
+    margin-right: 20px;
+    color: inherit;
+    vertical-align: middle;
+}
+
+/* Hover state */
+
+.wrapper-dropdown-5 .dropdown li:hover a {
+    color: #57a9d9;
+}
+
+/* Active state */
+
+.wrapper-dropdown-5.active {
+    background: rgba(32,150,255,.9);;
+    box-shadow: none;
+    border-bottom: none;
+    color: whitesmoke;
+}
+
+.wrapper-dropdown-5.active:after {
+    border-color: whitesmoke transparent;
+}
+
+.wrapper-dropdown-5.active .dropdown {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    max-height: 120px;
 }

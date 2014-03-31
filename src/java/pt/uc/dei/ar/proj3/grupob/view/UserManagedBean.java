@@ -114,6 +114,17 @@ public class UserManagedBean {
     public void setUserEJB(UserBean userEJB) {
         this.userEJB = userEJB;
     }
+    
+    public String deleteAccount() {
+        playFacade.deleteUser(userEJB.getUser());
+        invalidateSession();
+        return "index";
+    }
+    
+    public String logOut() {
+        invalidateSession();
+        return "index";
+    }
 
     public String optionChosed() {
         if (option.equals("2")) {

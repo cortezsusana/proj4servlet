@@ -49,19 +49,19 @@ public class PopularServlet extends HttpServlet {
                 out.println("<th> ARTIST </th>");
                 out.println("<th> ALBUM </th>");
                 out.println("<th> YEAR </th>");
-                out.println("<th> NBR TIMES USED </th>");
+                out.println("<th> TIMES USED </th>");
                 out.println("<th> USERNAME </th>");
                 out.println("</tr>");
 
                 for (int i = 0; i < musicFacade.mostPopular().size(); i++) {
                     int position = i + 1;
                     out.println("<tr>");
-                    out.println("<td>" + (position) + "</td>");
+                    out.println("<td class=\"alignColCenter\">" + (position) + "</td>");
                     out.println("<td>" + musicFacade.mostPopular().get(i).getTitle() + "</td>");
                     out.println("<td>" + musicFacade.mostPopular().get(i).getArtist() + "</td>");
                     out.println("<td>" + musicFacade.mostPopular().get(i).getAlbum() + "</td>");
-                    out.println("<td>" + musicFacade.mostPopular().get(i).getYearAlbum() + "</td>");
-                    out.println("<td>" + musicFacade.mostPopular().get(i).getPlaylistCollection().size() + "</td>");
+                    out.println("<td class=\"alignColCenter\">" + musicFacade.mostPopular().get(i).getYearAlbum() + "</td>");
+                    out.println("<td class=\"alignColCenter\">" + musicFacade.mostPopular().get(i).getPlaylistCollection().size() + "</td>");
                     out.println("<td>" + musicFacade.mostPopular().get(i).getUserPlayid().getName() + "</td>");
                     out.println("</tr>");
                 }
@@ -71,15 +71,15 @@ public class PopularServlet extends HttpServlet {
                 out.println("<tr>");        
                 out.println("<th> RANK </th>");
                 out.println("<th> TITLE </th>");
-                out.println("<th> NBR TIMES USED</th>");
+                out.println("<th> TIMES USED</th>");
                 out.println("</tr>");
 
                 for (int i = 0; i < musicFacade.top10List().size(); i++) {
                     int position = i + 1;
                     out.println("<tr>");
-                    out.println("<td>" + (position) + "</td>");
+                    out.println("<td class=\"alignColCenter\">" + (position) + "</td>");
                     out.println("<td>" + musicFacade.top10List().get(i).getTitle() + "</td>");
-                    out.println("<td>" + musicFacade.top10List().get(i).getPlaylistCollection().size() + "</td>");
+                    out.println("<td class=\"alignColCenter\">" + musicFacade.top10List().get(i).getPlaylistCollection().size() + "</td>");
                     out.println("</tr>");
                 }
                 out.println("</table>");

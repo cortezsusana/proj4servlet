@@ -153,7 +153,6 @@ public class PlayListManagedBean implements Converter, Serializable {
             newPlay.setUserPlayid(user.getUser());
             newPlay.setDatePlay(new Date());
             playFacade.createPlaylist(newPlay,user.getUser());
-            //userPlaylists();
             currentPlaylist=newPlay;
             newPlay = null;
         } catch (PlaylistAlreadyExistException e) {
@@ -174,8 +173,8 @@ public class PlayListManagedBean implements Converter, Serializable {
             newPlay = null;
         } catch (PlaylistAlreadyExistException e) {
             Logger.getLogger(PlayListManagedBean.class.getName()).log(Level.SEVERE, null, e);
-            //JsfUtil.addErrorMessage(e.getMessage());
             erro = e.getMessage();
+            JsfUtil.addErrorMessage("Please edit your previously TOP10 playlist and click on the link 'ADD TOP10 TO MY PLAYLIST' again");
         }
         return "listPlaylists";
     }

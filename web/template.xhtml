@@ -10,29 +10,13 @@
         <title>GetPLAY</title>
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
+        <script type="text/javascript" src="./resources/javascript.js"></script>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"></link>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,
               700italic,400,300,700,600|Volkhov:400,400italic,700,700italic|Lora:400,700,400italic,700italic' 
               rel='stylesheet' type='text/css'></link>
         <title>Home</title>
-        <script>
-            var ajaxRequest;
 
-            function ajaxRequestChanged() {
-                if (ajaxRequest.readyState === 4) {
-                    var texto = ajaxRequest.responseText;
-                    document.getElementById("listTOP10").innerHTML = texto;
-                    setTimeout(makeAjaxRequest, 2000);
-                }
-            }
-            function makeAjaxRequest() {
-                ajaxRequest = new XMLHttpRequest();
-                ajaxRequest.onreadystatechange = ajaxRequestChanged;
-                ajaxRequest.open("GET", "popularservlet?teste=top", true);
-                ajaxRequest.send(null);
-                return false;
-            }
-        </script>
 
     </h:head>
 
@@ -41,7 +25,7 @@
             <ui:insert name="top">
                 <h:form> 
                     <div id="colLeft">GetPlay</div>
-                    <div id="colCenter">       
+                    <div id="colCenter"> 
                         <h:selectOneMenu   id="searchOption" class="search" required="true" value="#{musicListManagedBean.option}"  >
                             <f:selectItem itemValue="1" itemLabel="Title and Artist" /> 
                             <f:selectItem itemValue="2" itemLabel="Title"/>
@@ -49,17 +33,59 @@
                         </h:selectOneMenu >
                         <h:inputText id="inputsearch" class="inputsearch" value="#{musicListManagedBean.search}"></h:inputText>
                         <h:commandButton id="search" value ="search" action="#{musicListManagedBean.optionChosed()}" image="/resources/img/search.png" />   
+
+                    </div >
+
+                    <div id="colRight" class="wrapper-demo">
+                        <h:outputLabel id="welcome" style="text-align: right" value="Welcome #{userManagedBean.userEJB.user.name} &nbsp;"/>
+                        <div id="dd" class="wrapper-dropdown-5" tabindex="1" >
+                            <h:outputLabel style="display: inline" value="OPTIONS"></h:outputLabel>
+                            <ul class="dropdown">
+                                <li><h:commandLink value="Edit your Profile" action="editUser"></h:commandLink></li>
+                                <li><h:commandLink value="Delete Account" action="#{userManagedBean.deleteAccount()}"></h:commandLink></li>
+                                <li><h:commandLink value="Log Out" action="#{userManagedBean.logOut()}"></h:commandLink></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div id="colRight">
-                        <h:outputLabel id="welcome" value="Welcome #{userManagedBean.userEJB.user.name}"/>
-                        <h:selectOneMenu   id="userOption" class="optionUser" required="true" value="#{userManagedBean.option}"  >   
-                            <f:selectItem itemValue="1" itemLabel="OPTIONS" rendered="false"/>
-                            <f:selectItem itemValue="2" itemLabel="Edit your profile"  />
-                            <f:selectItem itemValue="3" itemLabel="Delete account"/>
-                            <f:selectItem itemValue="4" itemLabel="Log Out"/>                        
-                        </h:selectOneMenu>
-                        <h:commandButton   id="go" class="but1" value="GO" action="#{userManagedBean.optionChosed}" />
-                    </div>
+                    <!-- jQuery if needed -->
+                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+                    <script type="text/javascript">
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents: function() {
+                var obj = this;
+
+                obj.dd.on('click', function(event) {
+                    $(this).toggleClass('active');
+                    event.stopPropagation();
+                });
+            }
+        }
+
+        $(function() {
+
+            var dd = new DropDown($('#dd'));
+
+            $(document).click(function() {
+                // all dropdowns
+                $('.wrapper-dropdown-5').removeClass('active');
+            });
+
+        });
+
+                    </script>
+
+                    <!--<h:selectOneMenu   id="userOption" class="optionUser" required="true" value=""  >   
+                         <f:selectItem itemValue="1" itemLabel="OPTIONS" rendered="false"/>
+                         <f:selectItem itemValue="2" itemLabel="Edit your profile"  />
+                         <f:selectItem itemValue="3" itemLabel="Delete account"/>
+                         <f:selectItem itemValue="4" itemLabel="Log Out"/>                        
+                     </h:selectOneMenu>
+                     <h:commandButton   id="go" class="but1" value="GO" action="" />
+                    -->
                 </h:form>
             </ui:insert>
         </nav>
@@ -87,7 +113,7 @@
                         <ui:insert name="right2">
                             <hr></hr>
                             <h:form>
-                            <h:commandLink id="top10playlist" value="ADD TOP10 TO MY PLAYLISTS" action="#{playListManagedBean.addPlayTop10()}" />      
+                                <h:commandLink id="top10playlist" value="ADD TOP10 TO MY PLAYLISTS" action="#{playListManagedBean.addPlayTop10()}" />      
                             </h:form>
                         </ui:insert></div>
                 </div>
@@ -97,6 +123,6 @@
                     </ui:insert>
                 </div>
             </div>
-        </div>        
+        </div>
     </h:body>
 </html>
